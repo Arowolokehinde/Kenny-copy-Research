@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel='icon' type='image/x-icon' href='./css/fontawesome-free-5.14.0-web/trainH.svg' />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <title>SilverLine Express</title>
+  </head>
+
+  <body>
+    <header class="header" id="header" style="background-image: linear-gradient(rgba(1, 24, 11, 0.7), rgba(1, 24, 11, 0.7)),
+    url('../assets/header.jpg');">
+      <!-- login form container -->
+      <div class="login-form-container hidden" id="login-form-container">
+        <div class="form-box">
+
+          <form action="#" class="form-1 hidden" id="loginForm">
+            <h3 class="form-title">Login</h3>
+            <input type="text" class="user-name-input" placeholder="Username" required />
+            <input type="password" name="password" class="user-password-input" placeholder="Password" required />
+            <a href="#" class="login-btn">Login</a>
+            <div class="forgotten-box">
+              <a href="#" class="forgot-link">Forgot password</a>
+              <a href="#signupForm" class="sign-up" id="showSignupForm">Sign up</a>
+            </div>
+          </form>
+
+          <form action="#" class="form-2" id="signupForm">
+            <h3 class="form-title">Sign up</h3>
+            <input type="text" class="user-name-input" placeholder="First Name" required />
+
+            <input type="text" class="user-name-input" placeholder="Last Name" required />
+
+            <input type="email" class="user-name-input" placeholder="Email" required />
+
+            <input type="password" name="password" class="user-password-input" placeholder="Password" required />
+            <a href="#" class="login-btn">Sign up</a>
+            <div class="forgotten-box">
+              <a href="#" class="sign-up" id="showLoginForm">Login</a>
+            </div>
+          </form>
+        </div>
+        <!-- <div class="overlay hidden" id="overlay">
+      </div> -->
+      </div>
+      <!-- END -->
+
+      <nav>
+        <div class="nav__bar">
+          <div class="logo">
+            <a href="#"><img src="./css/fontawesome-free-5.14.0-web/mod1.svg" alt="logo"></a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#service">Service</a></li>
+          <li><a href="#offer">Offer</a></li>
+          <li><a href="#client">Client</a></li>
+          <li><button class="btn" id="sign-in">Sign In</button></li>
+
+        </ul>
+      </nav>
+      <div class="section__container header__container" id="home">
+        <h1>Connecting Dreams, One Track at a Time</h1>
+        <p>Efficiency and Comfort, Every Stop, Every Service, SilverLine Express!</p>
+        <div class="booking">
+          <div class="booking__type" id="booking-type">
+            <div class="active">One Way</div>
+            <div>Round Trip</div>
+          </div>
+          <form action="/" class="booking__form">
+            <div class="booking__input">
+              <label for="departure">From</label>
+              <div class="dropdown">
+                <input type="text" placeholder="Departure" onclick="showDepartureDropdown()" readonly>
+                <div class="dropdown-content" id="departure-dropdown">
+                  <a href="#" onclick="selectDestination(event, 'Lagos')">Lagos</a>
+                  <a href="#" onclick="selectDestination(event, 'Abuja')">Abuja</a>
+                  <a href="#" onclick="selectDestination(event, 'Ibadan')">Ibadan</a>
+                  <a href="#" onclick="selectDestination(event, 'Owerri')">Owerri</a>
+                  <a href="#" onclick="selectDestination(event, 'Kaduna')">Kaduna</a>
+                </div>
+              </div>
+            </div>
+            <div class="booking__input">
+              <label for="arrival">To</label>
+              <div class="dropdown">
+                <input type="text" id="arrival" placeholder="Arrival" onclick="showArrivalDropdown()" readonly>
+                <div class="dropdown-content" id="arrival-dropdown">
+                  <a href="#" onclick="selectDestination(event, 'Lagos')">Lagos</a>
+                  <a href="#" onclick="selectDestination(event, 'Abuja')">Abuja</a>
+                  <a href="#" onclick="selectDestination(event, 'Ibadan')">Ibadan</a>
+                  <a href="#" onclick="selectDestination(event, 'Owerri')">Owerri</a>
+                  <a href="#" onclick="selectDestination(event, 'Kaduna')">Kaduna</a>
+                </div>
+              </div>
+            </div>
+            <div class="booking__input">
+              <label for="date">Date</label>
+              <input type="date" id="date" onchange="setFixedTime()">
+            </div>
+            <div class="booking__input">
+              <label for="time">Time</label>
+              <input type="time" id="time" readonly>
+            </div>
+            <div class="booking__btn">
+              <!-- worked on the button name only -->
+              <button id="" class="btn book-now-btn">Book Now</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <section class="section__container service__container" id="service">
+      <h2 class="section__header">Our Services Coming Soon</h2>
+      <p class="section__description">
+        Embark on a Journey of Excellence, Guided by SilverLine Express.
+      </p>
+      <div class="service__grid">
+        <div class="service__card">
+          <img src="assets/service-1.jpg" alt="service" />
+          <div>
+            <div>
+              <h4>Cruise Ticket</h4>
+              <p>
+                Explore the seas with ease! Book your next unforgettable cruise
+                adventure effortlessly.
+              </p>
+            </div>
+            <div class="service__btn">
+              <a href="Under-construction.html" target="_blank" class="btn">See All</a>
+            </div>
+          </div>
+        </div>
+        <div class="service__card">
+          <img src="assets/service-2.jpg" alt="service" />
+          <div>
+            <div>
+              <h4>Car Booking</h4>
+              <p>
+                Your ride, your way. Find and Book the perfect vehicle for your
+                Journey with ease.
+              </p>
+            </div>
+            <div class="service__btn">
+              <a href="under-construction.html" target="_blank" class="btn">See All</a>
+            </div>
+          </div>
+        </div>
+        <div class="service__card">
+          <img src="assets/service-3.jpg" alt="service" />
+          <div>
+            <div>
+              <h4>Train Ticket</h4>
+              <p>
+                Seamlessly Book your train journey with ease and convenience,
+                ensuring a smooth travel experience.
+              </p>
+            </div>
+            <div class="service__btn">
+              <a href="under-construction.html" target="_blank" class="btn">See All</a>
+            </div>
+          </div>
+        </div>
+        <div class="service__card">
+          <img src="assets/service-4.jpg" alt="service" />
+          <div>
+            <div>
+              <h4>Hotel Booking</h4>
+              <p>
+                Your Home away from Home. Discover and Book accommodations tailo
+                red to your needs effortlessly.
+              </p>
+            </div>
+            <div class="service__btn">
+              <a href="under-construction.html" target="_blank" class="btn">See All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container offer__container" id="offer">
+      <div class="offer__header">
+        <h2 class="section__header">Train Offer Details</h2>
+        <a href="#">See All</a>
+      </div>
+      <div class="offer__grid">
+        <div class="offer__card">
+          <img src="assets/offer-1.jpg" alt="offer" />
+          <h4>Lagos To Imo</h4>
+          <p>12 May 2024</p>
+          <div>
+            <span>#50,000.00</span>
+            <button class="btn book-now-btn">Book Now</button>
+          </div>
+        </div>
+        <div class="offer__card">
+          <img src="assets/offer-2.jpg" alt="offer" />
+          <h4>Lagos To Ibadan</h4>
+          <p>27 May 2024</p>
+          <div>
+            <span>#27,000.00</span>
+            <button class="btn book-now-btn">Book Now</button>
+          </div>
+        </div>
+        <div class="offer__card">
+          <img src="assets/offer-3.jpg" alt="offer" />
+          <h4>Lagos To Abuja</h4>
+          <p>4 June 2024</p>
+          <div>
+            <span>#70,000.00</span>
+            <button class="btn book-now-btn">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container about__container" id="about">
+      <div class="about__image">
+        <img src="assets/about.png" alt="about" />
+      </div>
+      <div class="about__content">
+        <h2 class="section__header">Simplify Your Journey To The Next Station</h2>
+        <p class="section__description">
+          Discover the world easily with our user-friendly platform,
+          connecting you to great destinations and accommodations.
+        </p>
+        <ul>
+          <li>
+            <span><i class="ri-checkbox-circle-line"></i></span>
+            Effortlessly discover and compare transport choices, for a
+            smooth journey to your next destination.
+          </li>
+          <li>
+            <span><i class="ri-checkbox-circle-line"></i></span>
+            Experience a simple and fast booking process for trains,
+            accomodations, and more, all in one place.
+          </li>
+        </ul>
+        <div class="about__links">
+          <a href="https://play.google.com/store/apps?hl=en&gl=US" target="_blank">
+            <img class="storeM" src="assets/google-play.png" alt="google-play" />
+          </a>
+          <a href="https://www.apple.com/app-store/" target="_blank">
+            <img class="storeM" src="assets/app-store.png" alt="app-store" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="client" id="client">
+      <div class="section__container client__container">
+        <h2 class="section__header">Words From Our Clients</h2>
+        <p class="section__description">
+          Read what our clients have to say about their experience with our
+          services.
+        </p>
+        <!-- Slider main container -->
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div class="client__card">
+                <img src="assets/client-1.jpg" alt="client" />
+                <h4>Awaja Angela</h4>
+                <p>Accountant</p>
+                <div class="client__ratings">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-half-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+                <p>
+                  Booking my trip was a breeze with this. I got great
+                  deals on trains, all in one place. The customer
+                  service was top notch; they were quick to respond to my
+                  inquiries and made sure i had all the information i needed as.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client__card">
+                <img src="assets/client-2.jpg" alt="client" />
+                <h4>Merife Gold</h4>
+                <p>Digital Marketer</p>
+                <div class="client__ratings">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+                <p>
+                  This platform is a game changer! I was able to easily compare
+                  prices for different transportation options and book my entire
+                  trip in minutes. The interface is indeed user-friendly.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client__card">
+                <img src="assets/client-3.jpg" alt="client" />
+                <h4>Ohuabunwa Isaac</h4>
+                <p>Computer Engineer</p>
+                <div class="client__ratings">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+                <p>
+                  I love how the website simplifies travel planning. From
+                  finding the best train deals to booking hotels, it's all so
+                  easy. Highly recommended for anyone looking to travel stress
+                  free!.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client__card">
+                <img src="assets/client-4.jpg" alt="client" />
+                <h4>Igbo Charles</h4>
+                <p>Business Man</p>
+                <div class="client__ratings">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-half-fill"></i></span>
+                  <span><i class="ri-star-line"></i></span>
+                </div>
+                <p>
+                  This website made my last-minute trip planning easy. I was
+                  able to find affordable transportation option quickly and
+                  easily. I'd definitely be using this website for all my
+                  future travels.
+                </p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client__card">
+                <img src="assets/client-5.jpg" alt="client" />
+                <h4>Ibekwe Ella</h4>
+                <p>Laboratory Scientist</p>
+                <div class="client__ratings">
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                  <span><i class="ri-star-fill"></i></span>
+                </div>
+                <p>
+                  With this website, I found a great deal on a train and hotel
+                  package within minutes. The whole process was smooth and I
+                  even got a confirmation email right away and honestly that was so so awesome the, thanks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="logo">
+            <a href="#"><img src="./css/fontawesome-free-5.14.0-web/mod1.svg" alt="logo" /></a>
+          </div>
+          <p>
+            Experience seamless travel planning through our comprehensive
+            travel platform. Find the best deals on trains, hotels,
+            accommodations, and more. Book your next unforgettable adventure
+            today.
+          </p>
+          <ul class="footer__socials">
+            <li>
+              <a href="https://www.facebook.com/profile.php?id=100055148356815" target="_blank"><i
+                  class="ri-facebook-fill"></i></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com" target="_blank"><i class="ri-instagram-line"></i></a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com" target="_blank"><i class="ri-youtube-line"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Trains</a>
+            </li>
+            <li>
+              <a href="#">Hotels</a>
+            </li>
+            <li>
+              <a href="#">Cruise</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact Us</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#">
+                <span><i class="ri-phone-fill"></i></span> +234 9876543210
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-record-mail-line"></i></span> info@SilverLines
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-map-pin-2-fill"></i></span> Lagos, Nigeria
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Subscribe</h4>
+          <form action="/">
+            <input type="text" placeholder="Enter your email" />
+            <button class="sub-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2023 Silverline Web Designs. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="../js/scripts.js"></script>
+    <!--<div id="signin-form" class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Sign In</h2>
+      <form>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required><br><br>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required><br><br>
+          <button type="submit">Sign In</button>
+      </form>
+      <div class="register">
+          <h3>New Customer? Register here</h3>
+          <form id="registrationForm">
+              <label for="new_email">Email:</label>
+              <input type="email" id="new_email" name="new_email" required><br><br>
+              <label for="new_password">Password:</label>
+              <input type="password" id="new_password" name="new_password" required><br><br>
+              <label for="confirm_password">Confirm Password:</label>
+              <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+              <button type="submit">Register</button>
+          </form>
+      </div>-->
+    <div id="confirmationMessage"></div>
+    </div>
+
+    <script>
+      function registerUser(event) {
+        event.preventDefault();
+        // Perform validation and registration process
+        // For demonstration, assume registration is successful
+        displayConfirmationMessage();
+      }
+
+      function displayConfirmationMessage() {
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        confirmationMessage.innerHTML = 'Account created successfully! Please check your email for confirmation.';
+      }
+
+      document.getElementById('registrationForm').addEventListener('submit', registerUser);
+    </script>
+    <!-- commented some code out of here  -->
+    <script>
+      // JavaScript code
+      // Add an event listener to the "Book Now" button
+      document.getElementById("book-now-button").addEventListener("click", function (event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        // Toggle the display of the payment section
+        //document.getElementById("payment-section").style.display = "block";
+      });
+    </script>
+
+    <script src="./js/toggle.js"></script>
+  </body>
+
+
+</html>

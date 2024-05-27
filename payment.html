@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+	    backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 2rem;
+            color: #333;
+        }
+
+        .payment-summary {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 2rem auto;
+            max-width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-summary p {
+            margin: 0.5rem 0;
+        }
+
+        .payment-form {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 0 auto;
+            max-width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-form input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+	    box-sizing:border-box;
+        }
+
+        .payment-form button {
+            display: block;
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #336a41;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .payment-form button:hover {
+            background-color: #044d35;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Details</h1>
+    <div class="payment-summary">
+        <p>Total Amount: $XX.XX</p>
+        <!-- Add other booking details here -->
+        <p>Booking Details:</p>
+        <ul>
+            <li>Booking Date: [Date]</li>
+            <li>Departure: [Departure Location]</li>
+            <li>Arrival: [Arrival Location]</li>
+        </ul>
+    </div class="container" id="container">
+    <form id="payment-form" class="payment-form">
+        <!--<label for="card-number">Card Number:</label>-->
+        <input type="number" id="card-number" placeholder="INPUT CARD NUMBER" name="card-number" required>
+        <!--<label for="name-on-card">Name on Card:</label>-->
+        <input type="text" id="name-on-card" placeholder="INPUT CVV" name="name-on-card" required>
+        <!--<label for="expiry-date">Expiry Date:</label>-->
+        <input type="month" id="expiry-date" placeholder="INPUT EXPIRY DATE" name="expiry-date" required>
+        <!--<label for="cvv">CVV:</label>-->
+        <button type="button">Pay Now</button>
+    </form>
+</body>
+</html>
