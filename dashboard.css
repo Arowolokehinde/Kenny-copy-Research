@@ -112,6 +112,10 @@ body {
   margin-top: 1.5rem;
 }
 
+.header__choose-class {
+  list-style: none;
+}
+
 .header__map {
   width: 100%;
   height: 100%;

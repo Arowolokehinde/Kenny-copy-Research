@@ -28,3 +28,5 @@ navigator.geolocation.getCurrentPosition(
 );
 
 console.log(navigator.geolocation);
+
+// Economy, business class, first class
