@@ -38,24 +38,46 @@
 
     <header class="header">
       <div class="header__book-train">
-        <h3>Book train</h3>
+        <h3>My Schedule</h3>
         <form action="#" method="post">
-          <input type="text" placeholder="Current Location" />
-          <input type="text" placeholder="Nearest Train Station" />
-          <select name="book-time" id="">
-            <option value="1am - 2am">1am - 2am</option>
-            <option value="1am - 2am">1am - 2am</option>
-            <option value="1am - 2am">1am - 2am</option>
-            <option value="1am - 2am">1am - 2am</option>
-          </select>
-          <button type="submit">Search</button>
+          <div>
+            <label for="Location">Current Location</label>
+            <input
+              type="text"
+              placeholder="Current Location"
+              class="current-location"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="train station">Train Station</label>
+            <input
+              type="text"
+              placeholder="Nearest Train Station"
+              class="nearest-train"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="boarding">Boarding Time</label>
+            <select name="book-time" id="boarding">
+              <option value="1am - 2am">1am - 2am</option>
+              <option value="1am - 2am">1am - 2am</option>
+              <option value="1am - 2am">1am - 2am</option>
+              <option value="1am - 2am">1am - 2am</option>
+            </select>
+          </div>
+
+          <button type="submit">Book Class</button>
         </form>
       </div>
 
-      <div class="header__choose-train">
-        <h1>Choose a class</h1>
+      <div class="header__choose-train hidden">
+        <h3>Choose a Class</h3>
         <ul class="header__choose-class">
-          <li class="header__choose-item">
+          <li class="header__choose-item active">
             <div class="train-img">
               <img src="/assets/train.png" alt="train icon" />
             </div>

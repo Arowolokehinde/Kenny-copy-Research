@@ -1,4 +1,22 @@
 "use strict";
+const form = document.querySelector("form");
+const chooseTrain = document.querySelector(".header__choose-train");
+const trainClassList = document.querySelector(".header__choose-class");
+const trainClassItems = document.querySelectorAll(".header__choose-item");
+
+// input fields
+const currentLocationInput = document.querySelector(".current-location");
+const nearestTrainInput = document.querySelector(".nearest-train");
+
+// input fields value
+const curLocationValue = currentLocationInput.value;
+const curNearestTrainValue = nearestTrainInput.value;
+
+// button
+const headerBookTrainButton = document.querySelector(
+  ".header__book-train button"
+);
+
 // get user current position
 const getCurPosition = function (position) {
   const { latitude, longitude } = position.coords;
@@ -20,10 +38,27 @@ const getCurPosition = function (position) {
   L.marker([latitude, longitude]).addTo(map);
 };
 
-navigator.geolocation.getCurrentPosition(getCurPosition, function (error) {
-  console.error(error);
+// get error position if any
+const getError = function (error) {
+  console.log(error);
+};
+
+navigator.geolocation.getCurrentPosition(getCurPosition, getError);
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  chooseTrain.classList.remove("hidden");
 });
 
-// console.log(navigator.geolocation);
+document.addEventListener("DOMContentLoaded", function () {
+  if (curLocationValue && curNearestTrainValue) {
+    chooseTrain.classList.remove("hidden");
+    headerBookTrainButton.classList.add("hidden");
+  }
+});
 
-// Economy, business class, first class
+trainClassList.addEventListener("click", function (e) {
+  trainClassItems.forEach((item) => item.classList.remove("active"));
+  e.target.closest(".header__choose-item").classList.toggle("active");
+  console.log(e.target.closest(".header__choose-item"));
+});

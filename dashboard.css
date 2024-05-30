@@ -10,6 +10,8 @@
 
 :root {
   --parent-padding: 2rem 6rem;
+  --color-primary: rgb(22, 163, 74);
+  --color-primary-transparent: rgba(22, 163, 74, 0.353);
 }
 
 html {
@@ -88,28 +90,35 @@ body {
   height: 100vh;
 }
 
-.header__book-train {
-  flex: 0 0 auto;
-  width: 27%;
-}
-
 .header__choose-train,
 .header__map {
   flex: 1;
 }
 
 .header__book-train {
-  border: 2px solid #eee;
-  border-radius: 1.5rem;
+  width: 27%;
+  flex: 0 0 auto;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+
   padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  border: 2px solid var(--color-primary-transparent);
 }
 
 .header__book-train form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
 
-  margin-top: 1.5rem;
+.header__book-train form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .header__choose-train {
@@ -131,6 +140,13 @@ body {
   display: flex;
   align-items: center;
   gap: 2.5rem;
+
+  color: var(--color-primary);
+  padding: 1.5rem;
+}
+
+.header__choose-item:hover {
+  cursor: pointer;
 }
 
 .train-img {
@@ -167,6 +183,15 @@ a:visited {
   text-decoration: none;
 }
 
+h3 {
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+label {
+  font-size: 1.2rem;
+}
+
 input,
 select {
   display: inline-block;
@@ -175,11 +200,39 @@ select {
   background: #eee;
   outline: 1rem;
   border: 0;
+
+  color: #2d2828;
+  background: var(--color-primary-transparent);
 }
 
 button {
+  border: 0;
+  outline: 0;
+  color: #eee;
   padding: 1.5rem 3rem;
   border-radius: 1rem;
-  outline: 0;
-  border: 0;
+  background: var(--color-primary);
+
+  font-size: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+button:hover {
+  transform: scale(1.01);
+  transition: transform 1s;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.8);
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  border: 2px solid var(--color-primary-transparent);
+  border-radius: 1rem;
 }
