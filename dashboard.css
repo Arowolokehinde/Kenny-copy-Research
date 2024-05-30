@@ -81,7 +81,7 @@ body {
 .header {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 5rem;
 
   padding: var(--parent-padding);
   min-height: calc(100vh - 6rem);
