@@ -22,6 +22,8 @@ body {
   font-size: 1.5rem;
   font-weight: 400;
   font-family: "Open Sans", sans-serif;
+
+  position: relative;
 }
 
 .nav {
@@ -82,12 +84,12 @@ body {
 
 .header {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 5rem;
 
   padding: var(--parent-padding);
-  min-height: calc(100vh - 6rem);
-  height: 100vh;
+  /* min-height: calc(100vh - 6rem);
+  height: 100vh; */
 }
 
 .header__choose-train,
@@ -169,10 +171,29 @@ body {
   width: 25%;
   font-size: 1.8rem;
 }
+
 .header__map {
   width: 100%;
   /* align-self: stretch; */
   min-height: 80vh;
+}
+
+.overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+
+  width: 40%;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
 }
 
 /* components */
@@ -205,6 +226,10 @@ select {
   background: var(--color-primary-transparent);
 }
 
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
 button {
   border: 0;
   outline: 0;
@@ -235,4 +260,14 @@ button:active {
 .active {
   border: 2px solid var(--color-primary-transparent);
   border-radius: 1rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.615);
 }
