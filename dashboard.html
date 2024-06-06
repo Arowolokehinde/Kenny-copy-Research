@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dashboard.css" />
+
+    <!--Map Leaflet-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script defer src="script.js"></script>
+
+    <title>silver.dashboard</title>
+  </head>
+
+  <body>
+    <nav class="nav">
+      <div class="logo">
+        <img src="/assets/logo-2.png" alt="logo icon" />
+      </div>
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#">Book Train</a></li>
+        <li class="nav__item"><a href="#">My Trips</a></li>
+      </ul>
+      <div class="nav__profile"></div>
+    </nav>
+
+    <header class="header">
+      <div class="header__book-train">
+        <h3>My Schedule</h3>
+        <form action="#" method="post">
+          <div>
+            <label for="Location">Current Location</label>
+            <input
+              type="text"
+              placeholder="Current Location"
+              class="current-location"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="train station">Train Station</label>
+            <input
+              type="text"
+              placeholder="Nearest Train Station"
+              class="nearest-train"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="boarding">Boarding Time</label>
+            <select name="book-time" id="boarding">
+              <option value="1am - 2am">1am - 2am</option>
+              <option value="1am - 2am">1am - 2am</option>
+              <option value="1am - 2am">1am - 2am</option>
+              <option value="1am - 2am">1am - 2am</option>
+            </select>
+          </div>
+
+          <button type="submit">Book Class</button>
+        </form>
+      </div>
+
+      <div class="header__choose-train hidden">
+        <h3>Choose a Class</h3>
+        <ul class="header__choose-class">
+          <li class="header__choose-item active">
+            <div class="train-img">
+              <img src="/assets/train.png" alt="train icon" />
+            </div>
+
+            <h4 class="train-class">Economy Class</h4>
+
+            <p class="train-price">NGN 2,760</p>
+          </li>
+
+          <li class="header__choose-item">
+            <div class="train-img">
+              <img src="/assets/train.png" alt="train icon" />
+            </div>
+
+            <h4 class="train-class">Business Class</h4>
+
+            <p class="train-price">NGN 2,760</p>
+          </li>
+
+          <li class="header__choose-item">
+            <div class="train-img">
+              <img src="/assets/train.png" alt="train icon" />
+            </div>
+
+            <h4 class="train-class">First Class</h4>
+
+            <p class="train-price">NGN 2,760</p>
+          </li>
+        </ul>
+        <button>Book Train</button>
+      </div>
+
+      <div class="header__map" id="map"></div>
+    </header>
+
+    <div class="overlay hidden">
+      <form action="#" class="overlay__form">
+        <h2>Pay for Seat</h2>
+        <input type="number" placeholder="Card Number" />
+        <input type="number" placeholder="CVV" />
+        <input type="number" placeholder="Card Date" />
+
+        <button type="submit">Pay</button>
+      </form>
+    </div>
+  </body>
+</html>
