@@ -34,6 +34,12 @@ body {
   padding: var(--parent-padding);
 }
 
+@media only screen and (max-width: 56.25em) {
+  .nav {
+    padding: 1.5rem;
+  }
+}
+
 .logo {
   width: 7rem;
   height: auto;
@@ -151,6 +157,21 @@ body {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 56.25em) {
+  .header {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .header__book-train {
+    width: 100%;
+  }
+
+  .header__map {
+    display: none;
+  }
+}
+
 .train-img {
   width: 20%;
   height: auto;
@@ -194,6 +215,12 @@ body {
   background: #fff;
   border-radius: 1rem;
   padding: 2rem;
+}
+
+@media only screen and (max-width: 56.25em) {
+  .overlay__form {
+    width: 90%;
+  }
 }
 
 /* components */
