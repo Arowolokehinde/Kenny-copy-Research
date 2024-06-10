@@ -15,12 +15,26 @@ const curNearestTrainValue = nearestTrainInput.value;
 
 // button
 const buttonActivateBook = document.querySelector(".header__book-train button");
-
 const headerChooseClass = document.querySelector(
   ".header__choose-train button"
 );
+const payButton = document.querySelector(".overlay__form");
 
-const payButton = document.querySelector(".overlay__form button");
+const getCardType = function (cardNumber) {
+  const visaRegex = /^4[0-9]{12}(?:[0-9]{3})?$/;
+  const mastercardRegex = /^(5[1-5][0-9]{14}|2[2-7][0-9]{14})$/;
+  const verveRegex = /^(506(0|1)|507(8|9)|6500)[0-9]{12,15}$/; // Verve regex pattern for Nigerian cards
+
+  if (visaRegex.test(cardNumber)) {
+    return "Visa";
+  } else if (mastercardRegex.test(cardNumber)) {
+    return "MasterCard";
+  } else if (verveRegex.test(cardNumber)) {
+    return "Verve";
+  } else {
+    return "Unknown";
+  }
+};
 
 // get user location
 const getAddress = async function (latitude, longitude) {
@@ -42,7 +56,6 @@ const getAddress = async function (latitude, longitude) {
 // get user current position
 const getCurPosition = function (position) {
   const { latitude, longitude } = position.coords;
-  console.log(latitude, longitude);
 
   // initializing the map
   let map = L.map("map", {
@@ -85,16 +98,27 @@ document.addEventListener("DOMContentLoaded", function () {
 trainClassList.addEventListener("click", function (e) {
   trainClassItems.forEach((item) => item.classList.remove("active"));
   e.target.closest(".header__choose-item").classList.toggle("active");
-  console.log(e.target.closest(".header__choose-item"));
 });
 
 headerChooseClass?.addEventListener("click", function () {
   document.querySelector(".overlay").classList.toggle("hidden");
-  console.log(document.querySelector(".overlay"));
 });
 
-payButton?.addEventListener("click", function (e) {
+payButton?.addEventListener("submit", function (e) {
   e.preventDefault();
+
+  // input
+  const cardNumber = document.querySelector(".card-number").value;
+  const cvvCard = document.querySelector(".cvv-card").value;
+  const cardDate = document.querySelector(".card-date").value;
+
+  if (!cardNumber && !cvvCard && !cardDate && cardDate === "") return;
+  if (+cvvCard.length > 3 || +cvvCard.length < 3) return;
+
+  const cardType = getCardType(cardNumber);
+  console.log(cardType, cvvCard.length, cardDate);
+
+  // needed data
   const data = {
     currentLocation: currentLocationInput.value,
     trainStation: nearestTrainInput.value,
@@ -106,11 +130,11 @@ payButton?.addEventListener("click", function (e) {
       .filter((item) => item.classList.contains("active"))[0]
       .querySelector(".train-price").textContent,
   };
+
   console.log(data);
 });
 
 document.querySelector(".overlay")?.addEventListener("click", function (e) {
-  console.log(e.target.classList.value);
   if (e.target.classList.value === "overlay")
     document.querySelector(".overlay").classList.toggle("hidden");
 });
