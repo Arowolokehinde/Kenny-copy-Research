@@ -6,20 +6,38 @@ const trainClassItems = document.querySelectorAll(".header__choose-item");
 
 // input fields
 const currentLocationInput = document.querySelector(".current-location");
-const nearestTrainInput = document.querySelector(".nearest-train");
+const nearestTrainInput = document.querySelector("#train-station");
+const boardingTime = document.querySelector("#boarding");
 
 // input fields value
 const curLocationValue = currentLocationInput.value;
 const curNearestTrainValue = nearestTrainInput.value;
 
 // button
-const headerBookTrainButton = document.querySelector(
-  ".header__book-train button"
-);
+const buttonActivateBook = document.querySelector(".header__book-train button");
 
 const headerChooseClass = document.querySelector(
   ".header__choose-train button"
 );
+
+const payButton = document.querySelector(".overlay__form button");
+
+// get user location
+const getAddress = async function (latitude, longitude) {
+  try {
+    const data = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+    );
+    const res = await data.json();
+
+    currentLocationInput.value = res.display_name;
+    currentLocationInput.disabled = true;
+
+    console.log(res.display_name);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // get user current position
 const getCurPosition = function (position) {
@@ -41,6 +59,8 @@ const getCurPosition = function (position) {
 
   // Using marker to identify user current location
   L.marker([latitude, longitude]).addTo(map);
+
+  getAddress(latitude, longitude);
 };
 
 // get error position if any
@@ -58,7 +78,7 @@ form.addEventListener("submit", function (e) {
 document.addEventListener("DOMContentLoaded", function () {
   if (curLocationValue && curNearestTrainValue) {
     chooseTrain.classList.remove("hidden");
-    headerBookTrainButton.classList.add("hidden");
+    buttonActivateBook.classList.add("hidden");
   }
 });
 
@@ -68,27 +88,25 @@ trainClassList.addEventListener("click", function (e) {
   console.log(e.target.closest(".header__choose-item"));
 });
 
-// get user location
-const getAddress = async function (latitude, longitude) {
-  try {
-    const data = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
-    );
-    const res = await data.json();
-
-    currentLocationInput.value = res.display_name;
-
-    currentLocationInput.disabled = true;
-
-    console.log(res.display_name);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 headerChooseClass?.addEventListener("click", function () {
   document.querySelector(".overlay").classList.toggle("hidden");
   console.log(document.querySelector(".overlay"));
+});
+
+payButton?.addEventListener("click", function (e) {
+  e.preventDefault();
+  const data = {
+    currentLocation: currentLocationInput.value,
+    trainStation: nearestTrainInput.value,
+    boardingTime: boardingTime.value,
+    trainClass: [...trainClassItems]
+      .filter((item) => item.classList.contains("active"))[0]
+      .querySelector(".train-class").textContent,
+    price: [...trainClassItems]
+      .filter((item) => item.classList.contains("active"))[0]
+      .querySelector(".train-price").textContent,
+  };
+  console.log(data);
 });
 
 document.querySelector(".overlay")?.addEventListener("click", function (e) {
@@ -97,6 +115,7 @@ document.querySelector(".overlay")?.addEventListener("click", function (e) {
     document.querySelector(".overlay").classList.toggle("hidden");
 });
 
-document.addEventListener("DOMContentLoaded", () =>
-  getAddress(6.5018255, 3.369134)
-);
+document.addEventListener("keydown", function (e) {
+  if (e.code === "Escape")
+    document.querySelector(".overlay").classList.toggle("hidden");
+});
