@@ -112,7 +112,13 @@ payButton?.addEventListener("submit", function (e) {
   const cvvCard = document.querySelector(".cvv-card").value;
   const cardDate = document.querySelector(".card-date").value;
 
-  if (!cardNumber && !cvvCard && !cardDate && cardDate === "") return;
+  if (!cardNumber && !cvvCard && !cardDate && cardDate === "") {
+    const html = "<p>The details provided are not valid</p>";
+    document
+      .querySelector(".overlay__form")
+      .insertAdjacentHTML("afterbegin", html);
+    // return;
+  }
   if (+cvvCard.length > 3 || +cvvCard.length < 3) return;
 
   const cardType = getCardType(cardNumber);
