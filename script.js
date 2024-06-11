@@ -32,7 +32,7 @@ const getCardType = function (cardNumber) {
   } else if (verveRegex.test(cardNumber)) {
     return "Verve";
   } else {
-    return "Unknown";
+    return "Not Found";
   }
 };
 
@@ -113,8 +113,8 @@ payButton?.addEventListener("submit", function (e) {
   const cardDate = document.querySelector(".card-date").value;
 
   if (!cardNumber && !cvvCard && !cardDate && cardDate === "") {
-    const html = "<p>The details provided are not valid</p>";
-    document
+    const html = "<p style='color: red'>The details provided are not valid</p>";
+    return document
       .querySelector(".overlay__form")
       .insertAdjacentHTML("afterbegin", html);
     // return;
