@@ -52,12 +52,27 @@
 
           <div>
             <label for="train station">Train Station</label>
-            <input
+            <!-- <input
               type="text"
               placeholder="Nearest Train Station"
               class="nearest-train"
               required
-            />
+            /> -->
+            <select name="Choose Train Station" id="train-station">
+              <option value="Lagos Railway Station">
+                Lagos Railway Station
+              </option>
+              <option value="Mobolaji Johnson Railway Station">
+                Mobolaji Johnson Railway Station
+              </option>
+              <option value="Yaba Railway Station">Yaba Railway Station</option>
+              <option value="Lagos Train Terminal Ebute Metta">
+                Lagos Train Terminal Ebute Metta
+              </option>
+              <option value="Blue Line Marina Train Station">
+                Blue Line Marina Train Station
+              </option>
+            </select>
           </div>
 
           <div>
@@ -116,9 +131,9 @@
     <div class="overlay hidden">
       <form action="#" class="overlay__form">
         <h2>Pay for Seat</h2>
-        <input type="number" placeholder="Card Number" />
-        <input type="number" placeholder="CVV" />
-        <input type="number" placeholder="Card Date" />
+        <input type="number" placeholder="Card Number" class="card-number" />
+        <input type="number" placeholder="CVV" class="cvv-card" />
+        <input type="date" placeholder="Card Date" class="card-date" />
 
         <button type="submit">Pay</button>
       </form>
